@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+
+html, body, #root { min-height: 100%; }
+
+body {
+  @apply bg-ink-900 text-slate-200 font-sans antialiased;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.045) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-attachment: fixed;
+}
+
+@layer components {
+  .panel { @apply rounded-lg border border-ink-600/70 bg-ink-850/90; }
+  .panel-title { @apply text-xs font-semibold uppercase tracking-widest text-slate-400; }
+  .label { @apply block text-xs font-medium text-slate-400 mb-1; }
+  .input {
+    @apply w-full rounded-md border border-ink-600 bg-ink-950 px-2.5 py-1.5 text-sm text-slate-100 font-mono
+           placeholder:text-slate-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-rr/70;
+  }
+  .input-error { @apply border-red-500/70; }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-ink-600 bg-ink-800 px-3.5 py-1.5
+           text-sm font-medium text-slate-200 transition-colors hover:bg-ink-700 focus:outline-none
+           focus-visible:ring-2 focus-visible:ring-rr/70 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary { @apply border-transparent bg-rr text-ink-950 hover:bg-sky-300; }
+  .btn-adaptive { @apply border-transparent bg-adaptive text-ink-950 hover:bg-emerald-300; }
+  .btn-ghost { @apply border-transparent bg-transparent hover:bg-ink-800; }
+  .badge { @apply inline-flex items-center rounded px-1.5 py-0.5 font-mono text-[11px] font-semibold; }
+  .kbd-hint { @apply text-[11px] text-slate-500; }
+}
+
+.sr-only-table { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@keyframes flow-pulse {
+  0%, 100% { border-color: rgba(42, 55, 69, 0.9); box-shadow: none; }
+  50% { border-color: rgba(56, 189, 248, 0.8); box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.25); }
+}
+.flow-step { animation: flow-pulse 6s ease-in-out infinite; }
+.flow-step:nth-child(1) { animation-delay: 0s; }
+.flow-step:nth-child(3) { animation-delay: 1.2s; }
+.flow-step:nth-child(5) { animation-delay: 2.4s; }
+.flow-step:nth-child(7) { animation-delay: 3.6s; }
+.flow-step:nth-child(9) { animation-delay: 4.8s; }
+@media (prefers-reduced-motion: reduce) { .flow-step { animation: none; } }

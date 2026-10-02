@@ -1,0 +1,29 @@
+# Backend (Maven)
+backend/target/
+*.class
+*.jar
+!backend/.mvn/wrapper/*.jar
+
+# Frontend (Node / Vite)
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/*.local
+
+# Env files with potentially local overrides (keep .env.example)
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+Thumbs.db

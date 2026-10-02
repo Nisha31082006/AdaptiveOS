@@ -1,0 +1,15 @@
+# ---- build stage ----
+FROM eclipse-temurin:17-jdk AS build
+WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN --mount=type=cache,target=/root/.m2 \
+    apt-get update && apt-get install -y --no-install-recommends maven && rm -rf /var/lib/apt/lists/* && \
+    mvn -q -DskipTests package
+
+# ---- run stage ----
+FROM eclipse-temurin:17-jre
+WORKDIR /app
+COPY --from=build /app/target/adaptiveos-backend-*.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]

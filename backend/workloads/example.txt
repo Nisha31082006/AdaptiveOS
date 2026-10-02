@@ -1,0 +1,4 @@
+# pid  arrival  bursts...
+P1 0 CPU:10
+P2 1 CPU:3 IO:4 CPU:2
+P3 2 CPU:6
