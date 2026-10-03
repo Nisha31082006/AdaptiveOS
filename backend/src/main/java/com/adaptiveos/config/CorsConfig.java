@@ -19,9 +19,9 @@ public class CorsConfig implements WebMvcConfigurer {
         this.allowedOrigins = allowedOrigins;
     }
 
-    @Override
+  @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/**")
+        registry.addMapping("/**") // Changed from "/api/**" to "/**"
                 .allowedOrigins(allowedOrigins)
                 .allowedMethods("GET", "POST", "OPTIONS")
                 .allowedHeaders("*")
